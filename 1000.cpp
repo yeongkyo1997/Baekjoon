@@ -1,3 +1,5 @@
+// https://www.acmicpc.net/problem/1000
+
 #include <iostream>
 
 using namespace std;
