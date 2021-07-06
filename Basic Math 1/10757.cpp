@@ -7,16 +7,16 @@
 using namespace std;
 
 int main() {
-    string a;
-    string b;
+    char a[100002];
+    char b[100002];
     int result[100002] = { 0, };
     cin >> a >> b;
 
-    int sizeA = a.size();
-    int sizeB = b.size();
+    int sizeA = strlen(a);
+    int sizeB = strlen(b);
 
     while (sizeA != -1 && sizeB != -1) {
-        if (a.size() > b.size()) {
+        if (strlen(a) > strlen(b)) {
             if (sizeA != 0)
                 result[sizeA] += (int)(a[sizeA - 1] - '0');
             if (sizeB != 0)
@@ -77,24 +77,24 @@ int main() {
 
     if (sizeA > sizeB) {
         if (result[0] != 0) {
-            for (int i = 0; i < a.size() + 1; i++) {
+            for (int i = 0; i < strlen(a) + 1; i++) {
                 printf("%d", result[i]);
             }
         }
         else {
-            for (int i = 1; i < a.size() + 1; i++) {
+            for (int i = 1; i < strlen(a) + 1; i++) {
                 printf("%d", result[i]);
             }
         }
     }
     else {
         if (result[0] != 0) {
-            for (int i = 0; i < b.size() + 1; i++) {
+            for (int i = 0; i < strlen(b) + 1; i++) {
                 printf("%d", result[i]);
             }
         }
         else {
-            for (int i = 1; i < b.size() + 1; i++) {
+            for (int i = 1; i < strlen(b) + 1; i++) {
                 printf("%d", result[i]);
             }
         }
