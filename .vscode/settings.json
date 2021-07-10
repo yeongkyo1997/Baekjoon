@@ -2,6 +2,12 @@
     "files.associations": {
         "iosfwd": "cpp",
         "algorithm": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "__hash_table": "cpp",
+        "deque": "cpp",
+        "functional": "cpp",
+        "type_traits": "cpp",
+        "version": "cpp",
+        "utility": "cpp"
     }
 }
