@@ -1,7 +1,7 @@
 // https://www.acmicpc.net/problem/2621
 
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -10,185 +10,60 @@ struct Card {
     int num;
 };
 
-bool compare(const Card c1, const Card c2) {
-    if (c1.num < c2.num) {
-        return true;
-    }
-    else if (c1.num == c2.num) {
-        return c1.color <= c2.color;
-    }
-    else {
-        return false;
-    }
-}
-
 int main() {
+    int maximum = 0;
+    int pair1 = 0;
+    int pair2 = 0;
+    int three = 0;
+    int four = 0;
+
+    int colorArr[4] = {
+        0,
+    };
+    int digitsArr[10] = {
+        0,
+    };
+
     Card c[5];
-    int max = 0;
-    bool check = true;
+
     for (int i = 0; i < 5; i++) {
         cin >> c[i].color >> c[i].num;
-    }
+        maximum = max(maximum, c[i].num);
 
-    sort(c, c + 5, compare);
+        switch (c[i].color) {
+        case 'R':
+            colorArr[0]++;
+            break;
 
-    // Rule 1
-    
-    for (int i = 0; i < 4; i++) {
-        if (c[i].num + 1!= c[i + 1].num || c[i].color != c[i + 1].color) {
-            check = false;
+        case 'G':
+            colorArr[1]++;
+            break;
+
+        case 'B':
+            colorArr[2]++;
+            break;
+
+        case 'Y':
+            colorArr[3]++;
             break;
         }
-    }
-    if (check) {
-        cout << 900 + c[4].num;
-        return 0;
+        digitsArr[c[i].num]++;
     }
 
-    // Rule 2
-
-    for (int i = 0; i < 2; i++) {
-        check = true;
-        for (int j = i; j < i + 3; j++) {
-            if (c[j].num != c[j + 1].num){
-                check = false;
-            }
-        }
-        if (check) {
-            cout << 800 + c[i].num;
-            return 0;
-        }   
+    bool isFulsh = false;
+    if (colorArr[0] == 5 || colorArr[1] == 5 || colorArr[2] == 5 ||
+        colorArr[3] == 5 || colorArr[4] == 5) {
+        isFulsh = true;
     }
 
-    // Rule 3
+    bool isStraight = false;
 
-    int three;
-    int two;
-
-    // 3개가 같은 경우
-    check = true;
-
-    for (int i = 0; i < 3; i++) {
-        for (int j = i; j < i + 2; j++) {
-            if (c[j].num != c[j + 1].num) {
-                check = false;
-            }
-        }
-
-        if (check) {
-            three = c[i].num;
-            break;
-        }
-    }
-    
-    // 2개가 같은 경우
-    if (check) {
-        check = true;
-
-        for (int i = 0; i < 4; i++) {
-            if (c[i].num != c[i + 1].num || c[i].num == three) {
-                check = false;
-            }
-            else {
-                check = true;
-            }
-
-            if (check) {
-                two = c[i].num;
-                cout << three * 10 + two + 700;
-                return 0;
+    if (isStraight) {
+        for (int i = 1; i <= 6; i++) {
+            if (digitsArr[i] && digitsArr[i + 1] && digitsArr[i + 2] &&
+                digitsArr[i + 3] && digitsArr[i + 4]) {
+                isStraight = true;
             }
         }
     }
-
-    // Rule 4
-    check = true;
-
-    for (int i = 0; i < 4; i++) {
-        if (c[i].color != c[i + 1].color) {
-            check = false;
-        }
-    }
-
-    if (check) {
-        cout << 600 + c[4].num;
-        return 0;
-    }
-
-    // Rule 5
-
-    check = true;
-        
-    for (int j = 0; j < 4; j++) {
-        if (c[j].num + 1  != c[j + 1].num) {
-            check = false;
-        }
-    }
-    if (check) {
-        cout << 500 + c[4].num;
-        return 0;
-    }
-
-    // Rule 6
-
-    for(int i = 0; i < 3; i ++) {
-        check = true;
-        for (int j = i; j < i + 2; j++) {
-            if (c[j].num != c[j + 1].num) {
-                check = false;
-            }
-        }
-        if (check) {
-            cout << 400 + c[i].num;
-            return 0;
-        }
-    }
-
-    // Rule 7
-    int result = 300;
-    int bigStart;
-    
-    for(int i = 0; i < 4; i ++) {
-        if (c[i].num != c[i + 1].num) {
-            check = false;
-        }
-        else {
-            check = true;
-        }
-        if (check) {
-            result += c[i].num;
-            bigStart = i + 1;
-            break;
-        }
-    }
-    
-    if (check) {
-        for(int i = bigStart; i < 4; i ++) {
-
-            if (c[i].num != c[i + 1].num) {
-                check = false;
-            }
-            else {
-                check = true;
-            }
-            if (check) {
-                result += c[i].num * 10;
-                cout << result;
-                return 0;
-            }
-        }
-    }
-
-    // Rule 8
-
-    for (int i = 0; i < 4; i ++) {
-        if (c[i].num == c[i + 1].num) {
-            cout << 200 + c[i].num;
-            return 0;
-        }
-    }
-
-    // Rule 9
-
-    cout << 100 + c[4].num;
 }
