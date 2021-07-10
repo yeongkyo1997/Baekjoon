@@ -58,12 +58,41 @@ int main() {
 
     bool isStraight = false;
 
-    if (isStraight) {
-        for (int i = 1; i <= 6; i++) {
-            if (digitsArr[i] && digitsArr[i + 1] && digitsArr[i + 2] &&
-                digitsArr[i + 3] && digitsArr[i + 4]) {
-                isStraight = true;
-            }
+    for (int i = 1; i <= 6; i++) {
+        if (digitsArr[i] && digitsArr[i + 1] && digitsArr[i + 2] &&
+            digitsArr[i + 3] && digitsArr[i + 4]) {
+            isStraight = true;
         }
     }
+
+    for (int i = 1; i <= 9; i++) {
+        if (digitsArr[i] == 2) {
+            if (pair1 > 0)
+                pair2 = i;
+            else
+                pair1 = i;
+        } else if (digitsArr[i] == 3)
+            three = i;
+        else if (digitsArr[i] == 4)
+            four = i;
+    }
+
+    if (isFulsh && isStraight)
+        cout << 900 + maximum;
+    else if (four != 0)
+        cout << 800 + four;
+    else if (three != 0 && pair1 != 0)
+        cout << 700 + three * 10 + pair1;
+    else if (isFulsh)
+        cout << 600 + maximum;
+    else if (isStraight)
+        cout << 500 + maximum;
+    else if (three != 0)
+        cout << 400 + three;
+    else if (pair1 != 0 && pair2 != 0)
+        cout << max(pair1, pair2) * 10 + min(pair1, pair2) + 300;
+    else if (pair1 != 0)
+        cout << pair1 + 200;
+    else
+        cout << maximum + 100;
 }
