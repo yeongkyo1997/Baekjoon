@@ -9,7 +9,7 @@ int main() {
 
     int num = 0;
 
-    string word = { };
+    string word { "", };
 
     getline(cin, word);
 
