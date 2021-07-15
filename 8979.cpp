@@ -9,30 +9,32 @@ struct Medal {
     int bronze;
 };
 
-bool compare(const int a[][4], const int b[][4]) {
-    if (a[1] < b[1])
-        return true;
-
-    else if (a[1] > b[1])
+bool compare(const Medal a, const Medal b) {
+    if (a.gold < b.gold)
         return false;
-
+    else if (a.gold > b.gold)
+        return true;
     else {
-        if (a[2] < b[2])
-            return true;
-
-        else if (a[2] > b[2])
+        if (a.silver < b.silver)
             return false;
-
+        else if (a.silver > b.silver)
+            return true;
         else {
-            if (a[3] < b[3])
-                return true;
-
-            else if (a[3] > b[3])
+            if (a.bronze < b.bronze)
                 return false;
+            else if (a.bronze > b.bronze)
+                return true;
             else
                 return true;
         }
     }
+}
+
+bool sameRank(Medal a, Medal b) {
+    if (a.gold == b.gold && a.silver == b.silver && a.bronze == b.bronze)
+        return true;
+    else
+        return false;
 }
 
 int main() {
@@ -43,4 +45,6 @@ int main() {
 
     for (int i = 0; i < n; i++)
         cin >> number >> m[i].gold >> m[i].silver >> m[i].bronze;
+
+    sort(m, m + n, compare);
 }
