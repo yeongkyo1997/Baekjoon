@@ -8,6 +8,8 @@
         "functional": "cpp",
         "type_traits": "cpp",
         "version": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "ostream": "cpp",
+        "stack": "cpp"
     }
 }
