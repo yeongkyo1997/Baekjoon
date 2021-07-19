@@ -10,6 +10,7 @@
         "version": "cpp",
         "utility": "cpp",
         "ostream": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "ios": "cpp"
     }
 }
