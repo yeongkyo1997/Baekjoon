@@ -2,6 +2,8 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <cstdio>
+
 using namespace std;
 map<string, int> mp;
 
