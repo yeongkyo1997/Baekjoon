@@ -1,3 +1,5 @@
+// https://www.acmicpc.net/problem/15997
+
 #include <algorithm>
 #include <iostream>
 #include <map>
@@ -15,13 +17,17 @@ typedef struct game {
 Game gameArr[6];
 double ret[6];
 int score[6];
-vector<pair<int, int>> finalScore(4);
+
+vector< pair<int, int> > finalScore(4);
 void func(int idx, double proc) {
     if (idx == 6) {
         if (proc == 0)
             return;
         for (int i = 0; i < 4; i++) {
-            finalScore[i] = {score[i], i};
+            pair<int, int> pp;
+            pp.first =score[i];
+            pp.second = i;
+            finalScore[i] = pp;
         }
         sort(finalScore.begin(), finalScore.end());
         int aScore = finalScore[0].first,
@@ -85,7 +91,8 @@ int main() {
 
     for (i = 0; i < 6; i++) {
         cin >> a >> b >> p >> q >> r;
-        gameArr[i] = { mp[a], mp[b], p, q, r };
+        Game gg = {mp[a], mp[b], p, q, r};
+        gameArr[i] = gg;
     }
 
     func(0, 1.0);
