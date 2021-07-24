@@ -11,6 +11,8 @@
         "utility": "cpp",
         "ostream": "cpp",
         "stack": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "__split_buffer": "cpp",
+        "vector": "cpp"
     }
 }
