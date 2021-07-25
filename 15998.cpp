@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ const int MAX = 300000;
 typedef long long ll;
 int n;
 ll arr[MAX][2];
-vector<pair<int, ll>> vec;
+vector<pair<int, ll> > vec;
 vector<ll> measure;
 
 ll gcd(ll a, ll b) {
@@ -51,10 +52,11 @@ int main() {
         }
 
         int chk = 1;
-        for (auto it : vec) {
-            int idx = it.first;
+
+        for (int i = 0; i < vec.size(); i++) {
+            int idx = vec[i].first;
             ll prev = (idx == 0 ? 0 : arr[idx - 1][1]);
-            if (it.second - tmp >= -(prev + arr[idx][0])) {
+            if (vec[i].second - tmp >= -(prev + arr[idx][0])) {
                 chk = 0;
                 break;
             }
