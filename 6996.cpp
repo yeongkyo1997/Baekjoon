@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/11328
+// https://www.acmicpc.net/problem/6996
 
 #include <cmath>
 #include <iostream>
@@ -38,8 +38,8 @@ int main() {
         }
 
         if (sum == 0)
-            cout << "Possible" << endl;
+            cout << str1 << " & " << str2 << " are anagrams." << endl;
         else
-            cout << "Impossible" << endl;
+            cout << str1 << " & " << str2 << " are NOT anagrams." << endl;
     }
 }
