@@ -13,6 +13,7 @@
         "stack": "cpp",
         "ios": "cpp",
         "__split_buffer": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "string": "cpp"
     }
 }
