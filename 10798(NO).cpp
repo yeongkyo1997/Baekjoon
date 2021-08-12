@@ -1,16 +1,14 @@
 // https://www.acmicpc.net/problem/10798
-// 미완성
 
-
+#include <algorithm>
 #include <iostream>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 
 int main() {
     string str[5];
-   
+
     for (int i = 0; i < 5; i++)
         cin >> str[i];
 
