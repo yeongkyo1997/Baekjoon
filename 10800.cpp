@@ -11,7 +11,7 @@ struct Ball {
 };
 
 bool compare(const Ball a, const Ball b) {
-    if (a.size < b.size)
+    if (a.size > b.size)
         return true;
     else
         return false;
